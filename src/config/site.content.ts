@@ -2,245 +2,201 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Profile-first discovery platform',
+    tagline: '',
   },
   footer: {
-    tagline: 'Profiles, collections, and community discovery',
+    tagline: 'CONNECT • SHARE • GROW',
   },
   hero: {
-    badge: 'Profile-led social discovery',
-    title: ['Explore public identities, highlights, and profile-driven discovery.'],
+    badge: 'Bookmarks · profiles · calm flow',
+    /** Single-line hero for the folio curation home (`CurationHome`). */
+    headline: 'Save what you return to—and keep trust visible beside every scan.',
+    /** Two-line hero for alternate home layouts (`HeroSection`). */
+    title: ['Save what you return to', 'and keep trust visible beside every scan.'],
     description:
-      'A profile-first platform for public identity, discovery surfaces, and social-style exploration.',
+      'Curate links and resources worth reopening. Public profiles sit next to your shelf so context and credibility stay in view—built for quick scanning, not endless feeds.',
     primaryCta: {
+      label: 'Browse bookmarks',
+      href: '/sbm',
+    },
+    secondaryCta: {
       label: 'Browse profiles',
       href: '/profile',
     },
-    secondaryCta: {
-      label: 'Open collections',
-      href: '/sbm',
-    },
-    searchPlaceholder: 'Search profiles, collections, creators, and public pages',
+    searchPlaceholder: 'Search bookmarks and profiles',
     focusLabel: 'Focus',
-    featureCardBadge: 'latest cover rotation',
-    featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
+    featureCardBadge: 'Live shelf',
+    featureCardTitle: 'Scan saves fast—see who curates or publishes without leaving the flow.',
     featureCardDescription:
-      'Recent images and stories stay at the center of the experience without changing any core platform behavior.',
+      'Tight rows for links, warmer cards for people: one rhythm so you spot the signal before you scroll.',
   },
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
+      title: 'Curated links, bookmarks, and trusted public profiles',
       description:
-        'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
+        'Curate links and resources you come back to. Public profiles sit beside your shelf so trust and context stay visible—built for scanning, not noise.',
+      openGraphTitle: 'Connect · share · grow—with saves and profiles in one place',
       openGraphDescription:
-        'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+        'Save links you trust, organize collections, and open public profiles when you need to know who is behind the work—without a crowded social feed.',
+      keywords: [
+        'social bookmarking',
+        'curated links',
+        'public profiles',
+        'resource library',
+        'content discovery',
+        'research desk',
+      ],
     },
-    introBadge: 'About the platform',
-    introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
+    introBadge: 'How it works',
+    introTitle: 'Links first—identity and trust right beside them.',
     introParagraphs: [
-      'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-      'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-      'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+      'The home lane favors social bookmarking: tight rows, clear categories, and collections so you can resurface saves in seconds.',
+      'Profiles sit alongside as trust signals—photo, bio, and continuity—so you know who saved, wrote, or maintains what you are opening.',
+      'Articles, listings, classifieds, images, and PDFs stay available from search, footer routes, and direct URLs whenever you need more than a link.',
     ],
-    sideBadge: 'At a glance',
+    sideBadge: 'What you get',
     sidePoints: [
-      'Reading-first homepage with stronger emphasis on stories and imagery.',
-      'Connected sections for articles, visuals, listings, and supporting resources.',
-      'Cleaner browsing rhythm designed to make exploration feel easier.',
-      'Lightweight interactions that keep the experience fast and readable.',
+      'Scan the shelf first, glance profiles second—same screen, less guesswork.',
+      'Bookmarks and profiles stay up front in navigation; everything else stays one search away.',
+      'Light motion and clear contrast so pages stay fast and easy to revisit.',
     ],
     primaryLink: {
-      label: 'Browse articles',
-      href: '/articles',
+      label: 'Open bookmarks',
+      href: '/sbm',
     },
     secondaryLink: {
-      label: 'See visuals',
-      href: '/images',
+      label: 'Meet profiles',
+      href: '/profile',
     },
   },
   cta: {
-    badge: 'Start exploring',
-    title: 'Explore articles, visuals, and resources through one connected experience.',
+    badge: 'Keep exploring',
+    title: 'From a saved link to the profile behind it—still on one desk.',
     description:
-      'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
+      'Collect references on the bookmark shelf, then open public profiles when you want continuity, credibility, and a reason to come back.',
     primaryCta: {
-      label: 'Get Started Free',
+      label: 'Start free',
       href: '/register',
     },
     secondaryCta: {
-      label: 'Contact Sales',
+      label: 'Talk with us',
       href: '/contact',
     },
   },
   taskSectionHeading: 'Latest {label}',
-  taskSectionDescriptionSuffix: 'Browse the newest posts in this section.',
+  taskSectionDescriptionSuffix: 'Newest posts in this section.',
 } as const
 
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
   article: {
-    title: 'Articles and stories',
-    description: 'Read articles, stories, guides, and long-form posts across topics and interests.',
+    title: 'Articles and briefings',
+    description: 'Read essays, guides, and long-form notes that pair with your saved links.',
   },
   listing: {
-    title: 'Listings and discoverable pages',
-    description: 'Explore listings, services, brands, and structured pages organized for easier browsing.',
+    title: 'Listings and structured pages',
+    description: 'Scan businesses, services, and structured surfaces with directory clarity.',
   },
   classified: {
-    title: 'Classifieds and announcements',
-    description: 'Browse classifieds, offers, notices, and time-sensitive posts across categories.',
+    title: 'Classifieds and timely posts',
+    description: 'Browse offers, notices, and short-lived opportunities alongside curated saves.',
   },
   image: {
-    title: 'Images and visual posts',
-    description: 'Explore image-led posts, galleries, and visual stories from across the platform.',
+    title: 'Visual posts',
+    description: 'Explore image-led stories and galleries when visuals carry the narrative.',
   },
   profile: {
-    title: 'Profiles and public pages',
-    description: 'Discover public profiles, brand pages, and identity-focused posts in one place.',
+    title: 'Public profiles',
+    description: 'Discover people, brands, and teams behind the bookmarks and posts you follow.',
   },
   sbm: {
-    title: 'Curated links and saved resources',
-    description: 'Browse useful links, saved references, and curated resources organized for discovery.',
+    title: 'Social bookmarks',
+    description: 'Scan curated links, saved tools, and reference shelves tuned for quick retrieval.',
   },
   pdf: {
-    title: 'PDFs and downloadable resources',
-    description: 'Open reports, documents, and downloadable resources shared across the platform.',
+    title: 'PDF library',
+    description: 'Open reports, decks, and downloadable files linked across the desk.',
   },
 }
 
-export const taskIntroCopy: Record<
-  TaskKey,
-  { title: string; paragraphs: string[]; links: { label: string; href: string }[] }
-> = {
+export const taskIntroCopy: Record<TaskKey, { title: string; paragraphs: string[] }> = {
   listing: {
-    title: 'Listings, services, and structured pages',
+    title: 'Listings as supporting evidence',
     paragraphs: [
-      'Explore listings, services, brands, and discoverable pages across categories. Each entry is organized to make browsing clearer and help visitors quickly understand what a post offers.',
-      'Listings connect naturally with articles, images, resources, and other content types so supporting information stays easy to reach from the same platform.',
-      'Browse by category to compare posts in context, discover related content, and move between formats without losing your place.',
-    ],
-    links: [
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Explore classifieds', href: '/classifieds' },
-      { label: 'View profiles', href: '/profile' },
+      'Directory-style listings stay available when a bookmark needs a physical counterpart—services, venues, and structured metadata.',
+      'This lane uses a wider, trust-forward grid separate from the bookmark shelf so scanning rhythms stay distinct.',
+      'Filters keep categories tight; everything here still routes the same as the base platform.',
     ],
   },
   article: {
-    title: 'Articles, stories, and long-form reading',
+    title: 'Editorial lane for deeper reading',
     paragraphs: [
-      'This section is built for stories, explainers, guides, and long-form reading across topics and interests.',
-      'Articles connect with listings, images, resources, and other content types so deeper reading can lead naturally into related discovery.',
-      'Use this section to browse thoughtful posts, revisit useful writing, and move into supporting content when you want more context.',
-    ],
-    links: [
-      { label: 'Explore listings', href: '/listings' },
-      { label: 'Open images', href: '/images' },
-      { label: 'Browse resources', href: '/pdf' },
+      'Articles open with a journal-style masthead—taller type, slower spacing, and a sidebar note block unlike the SBM grid.',
+      'Use this lane when a saved link deserves narrative context, commentary, or step-by-step guidance.',
+      'Category filters mirror the rest of the site; only the presentation shifts toward long-form comfort.',
     ],
   },
   classified: {
-    title: 'Classifieds, offers, and timely updates',
+    title: 'Bulletin rhythm for fast notices',
     paragraphs: [
-      'Classified posts help surface offers, notices, deals, and time-sensitive opportunities in a faster-scanning format.',
-      'They work well alongside articles, listings, and profiles, making it easier to connect short-term posts with more structured content.',
-      'Browse by category to find announcements quickly, then continue into related sections when you need more detail.',
-    ],
-    links: [
-      { label: 'Business listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'View profiles', href: '/profile' },
+      'Classifieds lean into a compact board: shorter copy blocks, urgency chips, and a two-tone marketplace shell.',
+      'Pair these posts with bookmarks when you want to track flash deals or local opportunities.',
+      'All filters and routes behave exactly like the shared base—only the visual cadence changes.',
     ],
   },
   image: {
-    title: 'Image-led posts and visual stories',
+    title: 'Nocturne gallery for visual-first posts',
     paragraphs: [
-      'Images take the lead in this section through galleries, visual posts, and story-led content where imagery carries the experience.',
-      'These posts connect with articles, listings, and other sections so visuals can act as entry points into deeper content.',
-      'Browse the latest visual updates, then continue into related stories or supporting pages for more context.',
-    ],
-    links: [
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Explore listings', href: '/listings' },
-      { label: 'Open classifieds', href: '/classifieds' },
+      'Images adopt a cinematic dark shell with oversized tiles so photography and screenshots breathe.',
+      'This is intentionally distant from the mint-on-ink bookmark desk—your eyes reset when you enter the gallery.',
+      'Hover lifts stay gentle to keep Lighthouse-friendly paint costs low.',
     ],
   },
   profile: {
-    title: 'Profiles, identities, and public pages',
+    title: 'Profiles as trust anchors',
     paragraphs: [
-      'Profiles capture the identity behind a business, creator, brand, or project and help visitors understand who is behind the content they are exploring.',
-      'These pages work as trust anchors across the site and connect naturally with stories, listings, documents, and other post types.',
-      'Browse profiles to understand people and brands more clearly, then continue into related content from the same source.',
-    ],
-    links: [
-      { label: 'Open listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Browse images', href: '/images' },
+      'Profiles emphasize identity, continuity, and credibility cues before the stream of posts continues below.',
+      'The header uses a split composition: portrait panel, stat chips, and mint dividers that echo the navbar language.',
+      'Bookmarks and articles remain one click away when you need to see what a person saves or publishes.',
     ],
   },
   sbm: {
-    title: 'Curated links and bookmarked resources',
+    title: 'Bookmark shelf · primary desk',
     paragraphs: [
-      'This section collects useful links, references, tools, and saved resources in a text-first browsing format.',
-      'Bookmarks stay connected to the rest of the platform, making it easier to move from a saved link into related stories, listings, or resources.',
-      'Use this section to organize helpful sources and discover connected content without leaving the broader site experience.',
-    ],
-    links: [
-      { label: 'Browse articles', href: '/articles' },
-      { label: 'Explore listings', href: '/listings' },
-      { label: 'Open PDFs', href: '/pdf' },
+      'This is the fastest-scanning surface on the site: category rails, tight rows, and mint highlights on deep emerald.',
+      'Collections behave like a research library—not a social timeline—so you can compare titles quickly.',
+      'Profiles, articles, and downloads remain accessible whenever a link needs more context.',
     ],
   },
   pdf: {
-    title: 'PDFs, documents, and downloadable files',
+    title: 'Document vault',
     paragraphs: [
-      'The PDF library hosts reports, guides, downloadable files, and longer-form document resources that support reading and discovery.',
-      'These resources work alongside stories, listings, and profiles, helping document-style content stay connected to the rest of the platform.',
-      'Browse by category to find relevant files quickly, then continue into related sections when you want more context.',
-    ],
-    links: [
-      { label: 'Read articles', href: '/articles' },
-      { label: 'See listings', href: '/listings' },
-      { label: 'Explore profiles', href: '/profile' },
+      'PDFs sit inside a parchment-toned shell with vertical rhythm tuned for filenames, file types, and download clarity.',
+      'Pair documents with bookmarks when you want long-form references beside quick links.',
+      'Nothing about storage or routing changes—this is presentation only.',
     ],
   },
   social: {
-    title: 'Short updates and community signals',
+    title: 'Community signals',
     paragraphs: [
-      'Short updates add quick signals that keep activity flowing across the platform.',
-      'They work well with stories, listings, and resources by helping visitors move from brief updates into deeper content.',
-      'Use these posts as lightweight entry points into the broader site experience.',
-    ],
-    links: [
-      { label: 'Open listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'View PDFs', href: '/pdf' },
+      'Short updates stay lightweight entry points into the wider desk.',
+      'They share components with bookmarks but keep softer contrast so they do not compete with the primary shelf.',
+      'Jump into profiles or articles whenever a thread needs more depth.',
     ],
   },
   comment: {
-    title: 'Comments and contextual responses',
+    title: 'Comments beneath stories',
     paragraphs: [
-      'Comments surface responses connected directly to articles and help keep discussion close to the writing it belongs to.',
-      'This layer adds perspective and reaction without needing a separate standalone content format.',
-      'Use comments as supporting context beneath stories, then continue exploring related content from the same topic area.',
-    ],
-    links: [
-      { label: 'Explore articles', href: '/articles' },
-      { label: 'View listings', href: '/listings' },
-      { label: 'See classifieds', href: '/classifieds' },
+      'Comments stay tethered to articles for contextual discussion.',
+      'Visual styling mirrors editorial notes with mint underline accents.',
+      'Use them as supporting detail, then return to bookmarks or profiles.',
     ],
   },
   org: {
-    title: 'Organizations, teams, and structured entities',
+    title: 'Organizations and teams',
     paragraphs: [
-      'Organization pages provide structured identity surfaces for teams, brands, communities, and agencies.',
-      'Used with listings, stories, profiles, and resources, they help create stronger structure across the platform.',
-      'Connect organization pages with related content to build a clearer and more unified site presence.',
-    ],
-    links: [
-      { label: 'Business listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'PDF library', href: '/pdf' },
+      'Organization pages provide structured identities for teams, studios, and agencies.',
+      'Layout parallels profiles but widens metadata for departments and collective authorship.',
+      'Bookmarks help visitors see what an org saves publicly.',
     ],
   },
 }

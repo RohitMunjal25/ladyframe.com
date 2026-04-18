@@ -6,6 +6,7 @@ import { fetchSiteFeed } from "@/lib/site-connector";
 import { buildPostUrl, getPostTaskKey } from "@/lib/task-data";
 import { getMockPostsForTask } from "@/lib/mock-posts";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { siteContent } from "@/config/site.content";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 
 export const revalidate = 3;
@@ -75,8 +76,8 @@ export default async function SearchPage({
       title="Search"
       description={
         query
-          ? `Results for "${query}"`
-          : "Browse the latest posts across every task."
+          ? `Results for “${query}” on ${SITE_CONFIG.name}`
+          : `Search bookmarks, profiles, and every post type indexed on ${SITE_CONFIG.name}.`
       }
       actions={
         <form action="/search" className="flex w-full gap-2 sm:w-auto">
@@ -88,7 +89,7 @@ export default async function SearchPage({
             <Input
               name="q"
               defaultValue={query}
-              placeholder="Search across tasks..."
+              placeholder={siteContent.hero.searchPlaceholder}
               className="h-11 pl-9"
             />
           </div>

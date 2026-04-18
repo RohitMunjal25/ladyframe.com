@@ -4,18 +4,19 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { mockFaqs } from '@/data/mock-data'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const topics = [
-  { title: 'Getting Started', description: 'Create your account and publish your first post.' },
-  { title: 'Bookmarks & Collections', description: 'Save links, organize folders, and share collections.' },
-  { title: 'Listings & Ads', description: 'Manage your business listings and classifieds.' },
+  { title: 'Getting started', description: `Create your ${SITE_CONFIG.name} account, complete your profile, and save your first bookmark.` },
+  { title: 'Bookmarks and collections', description: 'Submit links, tag them, and group saves into collections you can share or keep private.' },
+  { title: 'Profiles and publishing', description: 'Polish your public profile, then add articles, listings, classifieds, or PDFs when you need them.' },
 ]
 
 export default function HelpPage() {
   return (
     <PageShell
       title="Help Center"
-      description="Find answers, guides, and best practices."
+      description={`Guides and answers for using ${SITE_CONFIG.name}: bookmarks, profiles, and the rest of the archive.`}
       actions={
         <Button asChild>
           <Link href="/contact">Contact Support</Link>

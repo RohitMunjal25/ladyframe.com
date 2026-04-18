@@ -9,6 +9,7 @@ import { TaskPostCard } from '@/components/shared/task-post-card'
 import { SITE_CONFIG, type TaskKey } from '@/lib/site-config'
 import { buildPageMetadata } from '@/lib/seo'
 import { fetchTaskPosts } from '@/lib/task-data'
+import { getMockPostsForTask } from '@/lib/mock-posts'
 import { siteContent } from '@/config/site.content'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind, type ProductKind } from '@/design/factory/get-product-kind'
@@ -39,11 +40,19 @@ const taskIcons: Record<TaskKey, any> = {
   classified: Tag,
   image: ImageIcon,
   profile: User,
+  social: LayoutGrid,
+  comment: FileText,
+  pdf: FileText,
+  org: Building2,
 }
 
 function resolveTaskKey(value: unknown, fallback: TaskKey): TaskKey {
   if (value === 'listing' || value === 'classified' || value === 'article' || value === 'image' || value === 'profile' || value === 'sbm') return value
   return fallback
+}
+
+function getPostTask(post: SitePost): string | undefined {
+  return (post as SitePost & { task?: string }).task
 }
 
 function getTaskHref(task: TaskKey, slug: string) {
@@ -127,14 +136,17 @@ function getVisualTone() {
 
 function getCurationTone() {
   return {
-    shell: 'bg-[#f7f1ea] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4] shadow-[0_24px_60px_rgba(91,56,37,0.08)]',
-    soft: 'border border-[#e8dbce] bg-[#f3e8db]',
-    muted: 'text-[#71574a]',
-    title: 'text-[#261811]',
-    badge: 'bg-[#5b2b3b] text-[#fff0f5]',
-    action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
-    actionAlt: 'border border-[#ddcdbd] bg-transparent text-[#261811] hover:bg-[#efe3d6]',
+    shell: 'bg-[linear-gradient(180deg,#ecfdf5_0%,#f6fffb_55%,#eefaf4_100%)] text-[#091413]',
+    panel: 'border border-[rgba(64,138,113,0.22)] bg-[rgba(255,255,255,0.94)] shadow-[0_26px_70px_rgba(9,20,19,0.08)]',
+    soft: 'border border-[rgba(64,138,113,0.18)] bg-[rgba(236,252,244,0.9)]',
+    muted: 'text-[rgb(55,85,76)]',
+    title: 'text-[#091413]',
+    badge: 'border border-[rgba(176,228,204,0.55)] bg-[rgba(40,90,72,0.12)] text-[#1a3d32]',
+    action: 'bg-[#b0e4cc] text-[#091413] hover:bg-[#9fd6b8]',
+    actionAlt: 'border border-[rgba(64,138,113,0.35)] bg-transparent text-[#091413] hover:bg-[rgba(176,228,204,0.25)]',
+    ink: 'bg-[#091413] text-[#e8fff4]',
+    inkMuted: 'text-[#b0e4cc]/85',
+    rail: 'border-[rgba(176,228,204,0.2)] bg-[rgba(15,35,30,0.55)]',
   }
 }
 
@@ -159,16 +171,16 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
             <div>
               <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${tone.badge}`}>
                 <Compass className="h-3.5 w-3.5" />
-                Local discovery product
+                {SITE_CONFIG.name} directory mode
               </span>
               <h1 className={`mt-6 max-w-4xl text-5xl font-semibold tracking-[-0.06em] sm:text-6xl ${tone.title}`}>
-                Search businesses, compare options, and act fast without digging through generic feeds.
+                Find businesses and services with structured listings—then jump into bookmarks and profiles on the same {SITE_CONFIG.name} account.
               </h1>
               <p className={`mt-6 max-w-2xl text-base leading-8 ${tone.muted}`}>{SITE_CONFIG.description}</p>
 
               <div className={`mt-8 grid gap-3 rounded-[2rem] p-4 ${tone.panel} md:grid-cols-[1.25fr_0.8fr_auto]`}>
-                <div className="rounded-full bg-black/5 px-4 py-3 text-sm">What do you need today?</div>
-                <div className="rounded-full bg-black/5 px-4 py-3 text-sm">Choose area or city</div>
+                <div className="rounded-full bg-black/5 px-4 py-3 text-sm">What are you looking for?</div>
+                <div className="rounded-full bg-black/5 px-4 py-3 text-sm">City or neighborhood</div>
                 <Link href={primaryTask?.route || '/listings'} className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ${tone.action}`}>
                   Browse now
                   <ArrowRight className="h-4 w-4" />
@@ -247,14 +259,14 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
           <div className="grid gap-4 md:grid-cols-2">
             {(profilePosts.length ? profilePosts : classifiedPosts).slice(0, 4).map((post) => {
               const meta = getPostMeta(post)
-              const taskKey = resolveTaskKey(post.task, profilePosts.length ? 'profile' : 'classified')
+              const taskKey = resolveTaskKey(getPostTask(post), profilePosts.length ? 'profile' : 'classified')
               return (
                 <Link key={post.id} href={getTaskHref(taskKey, post.slug)} className={`overflow-hidden rounded-[1.8rem] ${tone.panel}`}>
                   <div className="relative h-44 overflow-hidden">
                     <ContentImage src={getPostImage(post)} alt={post.title} fill className="object-cover" />
                   </div>
                   <div className="p-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] opacity-70">{meta.category || post.task || 'Profile'}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] opacity-70">{meta.category || getPostTask(post) || 'Profile'}</p>
                     <h3 className="mt-2 text-xl font-semibold">{post.title}</h3>
                     <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{post.summary || 'Quick access to local information and related surfaces.'}</p>
                   </div>
@@ -375,7 +387,7 @@ function VisualHome({ primaryTask, imagePosts, profilePosts, articlePosts }: { p
             {gallery.slice(0, 5).map((post, index) => (
               <Link
                 key={post.id}
-                href={getTaskHref(resolveTaskKey(post.task, 'image'), post.slug)}
+                href={getTaskHref(resolveTaskKey(getPostTask(post), 'image'), post.slug)}
                 className={index === 0 ? `col-span-2 row-span-2 overflow-hidden rounded-[2.4rem] ${tone.panel}` : `overflow-hidden rounded-[1.8rem] ${tone.soft}`}
               >
                 <div className={index === 0 ? 'relative h-[360px]' : 'relative h-[170px]'}>
@@ -409,61 +421,143 @@ function VisualHome({ primaryTask, imagePosts, profilePosts, articlePosts }: { p
   )
 }
 
-function CurationHome({ primaryTask, bookmarkPosts, profilePosts, articlePosts }: { primaryTask?: EnabledTask; bookmarkPosts: SitePost[]; profilePosts: SitePost[]; articlePosts: SitePost[] }) {
+function normalizeSbmShelfPost(post: SitePost, index: number): SitePost {
+  const base = post.content && typeof post.content === 'object' ? post.content : {}
+  return {
+    ...post,
+    id: post.id || `home-shelf-mock-${index}`,
+    content: { ...base, type: 'social' },
+  }
+}
+
+function CurationHome({ primaryTask, bookmarkPosts, profilePosts }: { primaryTask?: EnabledTask; bookmarkPosts: SitePost[]; profilePosts: SitePost[] }) {
   const tone = getCurationTone()
-  const collections = bookmarkPosts.length ? bookmarkPosts.slice(0, 4) : articlePosts.slice(0, 4)
-  const people = profilePosts.slice(0, 3)
+  const realShelf = bookmarkPosts.slice(0, 7)
+  const shelfIsMock = realShelf.length === 0
+  const shelf = shelfIsMock
+    ? getMockPostsForTask('sbm').slice(0, 7).map((post, index) => normalizeSbmShelfPost(post, index))
+    : realShelf
+  const people = profilePosts.slice(0, 4)
 
   return (
     <main className={tone.shell}>
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
+      <section className={`relative overflow-hidden ${tone.ink}`}>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(64,138,113,0.35),transparent_42%),radial-gradient(circle_at_82%_0%,rgba(176,228,204,0.18),transparent_35%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:px-8 lg:py-20">
           <div>
-            <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${tone.badge}`}>
-              <Bookmark className="h-3.5 w-3.5" />
-              Curated collections
+            <span className={`inline-flex items-center gap-2 rounded-full border border-[rgba(176,228,204,0.35)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.26em] ${tone.inkMuted}`}>
+              <Bookmark className="h-3.5 w-3.5 text-[#b0e4cc]" />
+              {siteContent.hero.badge}
             </span>
-            <h1 className={`mt-6 max-w-4xl text-5xl font-semibold tracking-[-0.06em] sm:text-6xl ${tone.title}`}>
-              Save, organize, and revisit resources through shelves, boards, and curated collections.
+            <h1 className="mt-7 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl lg:text-[3.15rem]">
+              {siteContent.hero.headline}
             </h1>
-            <p className={`mt-6 max-w-2xl text-base leading-8 ${tone.muted}`}>{SITE_CONFIG.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={primaryTask?.route || '/sbm'} className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ${tone.action}`}>
-                Open collections
+            <p className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-[17px] ${tone.inkMuted}`}>{siteContent.hero.description}</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href={primaryTask?.route || '/sbm'} className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition hover:brightness-105 ${tone.action}`}>
+                {siteContent.hero.primaryCta.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/profile" className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ${tone.actionAlt}`}>
-                Explore curators
+              <Link href="/profile" className={`inline-flex items-center gap-2 rounded-full border border-[rgba(176,228,204,0.45)] px-6 py-3 text-sm font-semibold text-[#dff9ec] transition hover:bg-white/10`}>
+                {siteContent.hero.secondaryCta.label}
               </Link>
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {collections.map((post) => (
-              <Link key={post.id} href={getTaskHref(resolveTaskKey(post.task, 'sbm'), post.slug)} className={`rounded-[1.8rem] p-6 ${tone.panel}`}>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Collection</p>
-                <h3 className="mt-3 text-2xl font-semibold">{post.title}</h3>
-                <p className={`mt-3 text-sm leading-8 ${tone.muted}`}>{post.summary || 'A calmer bookmark surface with room for context and grouping.'}</p>
-              </Link>
-            ))}
+          <div className={`mt-12 rounded-[2rem] border p-1 lg:mt-0 ${tone.rail}`}>
+            <div className="rounded-[1.85rem] bg-[#071815]/85 p-4 sm:p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#b0e4cc]/75">Live shelf</p>
+                  {shelfIsMock ? (
+                    <span className="rounded-full border border-[#b0e4cc]/25 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#b0e4cc]/80">
+                      Preview
+                    </span>
+                  ) : null}
+                </div>
+                <Link href="/sbm" className="text-xs font-semibold text-[#b0e4cc] hover:text-white">
+                  View all
+                </Link>
+              </div>
+              <ul className="mt-2 divide-y divide-white/8">
+                {shelf.map((post) => {
+                  const meta = getPostMeta(post)
+                  return (
+                    <li key={post.id}>
+                      <Link href={getTaskHref(resolveTaskKey(getPostTask(post), 'sbm'), post.slug)} className="group flex gap-4 py-4">
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#408a71] shadow-[0_0_0_6px_rgba(64,138,113,0.12)]" />
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b0e4cc]/65">{meta.category || 'Resource'}</p>
+                          <p className="mt-1 line-clamp-2 text-[15px] font-semibold leading-snug text-white transition group-hover:text-[#b0e4cc]">{post.title}</p>
+                        </div>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#408a71] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className={`rounded-[2rem] p-7 ${tone.panel}`}>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Why this feels different</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">More like saved boards and reading shelves than a generic post feed.</h2>
-            <p className={`mt-4 max-w-2xl text-sm leading-8 ${tone.muted}`}>The structure is calmer, the cards are less noisy, and the page encourages collecting and returning instead of forcing everything into a fast-scrolling list.</p>
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="space-y-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#285a48]">Who you are trusting</p>
+            <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[#091413]">Profiles that answer who saved, wrote, or maintains what you click.</h2>
+            <p className={`max-w-xl text-sm leading-8 ${tone.muted}`}>
+              Wider cards and clearer imagery put people beside the link rail—so credibility shows up in the same glance as the headline, not three clicks later.
+            </p>
+            <Link href="/profile" className={`inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold ${tone.action}`}>
+              Browse profiles
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {people.map((post) => (
-              <Link key={post.id} href={`/profile/${post.slug}`} className={`rounded-[1.8rem] p-5 ${tone.soft}`}>
-                <div className="relative h-32 overflow-hidden rounded-[1.2rem]">
-                  <ContentImage src={getPostImage(post)} alt={post.title} fill className="object-cover" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold">{post.title}</h3>
-                <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>Curator profile, saved resources, and collection notes.</p>
-              </Link>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {people.length ? (
+              people.map((post) => (
+                <Link key={post.id} href={`/profile/${post.slug}`} className={`group overflow-hidden rounded-[1.75rem] ${tone.panel}`}>
+                  <div className="relative h-40 overflow-hidden">
+                    <ContentImage src={getPostImage(post)} alt={post.title} fill className="object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#091413]/55 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#285a48]">Public profile</p>
+                    <h3 className="mt-2 text-lg font-semibold text-[#091413]">{post.title}</h3>
+                    <p className={`mt-2 line-clamp-2 text-sm leading-7 ${tone.muted}`}>{post.summary || 'Signals, highlights, and continuity across saved work.'}</p>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className={`rounded-[1.75rem] p-8 sm:col-span-2 ${tone.soft}`}>
+                <p className="text-sm font-semibold text-[#091413]">Profiles will appear here as soon as posts sync.</p>
+                <p className={`mt-2 text-sm ${tone.muted}`}>Routes stay live—open /profile directly to browse the full directory.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[rgba(64,138,113,0.15)] bg-white/70">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8">
+          <div className={`rounded-[2rem] p-8 ${tone.panel}`}>
+            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#285a48]">Beyond the shelf</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#091413]">When a link is not enough, the rest of the archive is one step away.</h2>
+            <p className={`mt-4 text-sm leading-8 ${tone.muted}`}>
+              Bookmarks and profiles stay up front; articles, listings, classifieds, images, and PDFs stay in the product for deeper work—open them from search or direct routes whenever you need them.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              ['Readable link shelf', 'Categories and tight rows so you compare titles quickly instead of hunting cards.'],
+              ['Clear people lane', 'Softer panels for faces and bios so trust reads warmer than the ink-heavy list.'],
+              ['Live when you are', 'When your feed sends bookmarks, this shelf updates automatically—no extra publish step.'],
+            ].map(([title, body]) => (
+              <div key={title} className={`rounded-[1.5rem] p-5 ${tone.soft}`}>
+                <p className="text-sm font-semibold text-[#091413]">{title}</p>
+                <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{body}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -541,7 +635,7 @@ export default async function HomePage() {
         <VisualHome primaryTask={primaryTask} imagePosts={imagePosts} profilePosts={profilePosts} articlePosts={articlePosts} />
       ) : null}
       {productKind === 'curation' ? (
-        <CurationHome primaryTask={primaryTask} bookmarkPosts={bookmarkPosts} profilePosts={profilePosts} articlePosts={articlePosts} />
+        <CurationHome primaryTask={primaryTask} bookmarkPosts={bookmarkPosts} profilePosts={profilePosts} />
       ) : null}
       <Footer />
     </div>

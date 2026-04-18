@@ -3,12 +3,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const sections = [
-  { title: "Account Usage", body: "Keep your account secure and follow community guidelines." },
   {
-    title: "Content Ownership",
-    body: "You own the content you publish and grant the platform a license to display it.",
+    title: "Accounts",
+    body: `You are responsible for activity under your ${SITE_CONFIG.name} login. Use a strong password and notify support if you suspect unauthorized access.`,
   },
-  { title: "Acceptable Use", body: "No spam, harassment, or illegal content." },
+  {
+    title: "Content you publish",
+    body: `You retain rights to your text, links, and media. You grant ${SITE_CONFIG.name} a non-exclusive license to host, display, and distribute that content on the service.`,
+  },
+  {
+    title: "Acceptable use",
+    body: "Do not post spam, malware, harassment, or illegal material. We may remove content or suspend accounts that put members or the platform at risk.",
+  },
 ];
 
 export default function TermsPage() {

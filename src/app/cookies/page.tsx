@@ -1,17 +1,18 @@
 ﻿import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const sections = [
-  { title: 'Essential Cookies', body: 'Required for authentication and core features.' },
-  { title: 'Analytics Cookies', body: 'Help us understand how the platform is used.' },
-  { title: 'Preference Cookies', body: 'Remember your settings and saved filters.' },
+  { title: 'Essential cookies', body: `Required so ${SITE_CONFIG.name} can keep you signed in, protect forms, and load the application securely.` },
+  { title: 'Analytics cookies', body: 'Optional cookies that help us see aggregate traffic and performance so we can improve search and stability.' },
+  { title: 'Preference cookies', body: 'Remember choices such as theme or filters on your device so repeat visits feel consistent.' },
 ]
 
 export default function CookiesPage() {
   return (
     <PageShell
       title="Cookie Policy"
-      description="Details about the cookies we use."
+      description={`How ${SITE_CONFIG.name} uses cookies and similar technologies.`}
     >
       <Card className="border-border bg-card">
         <CardContent className="p-6 space-y-4">

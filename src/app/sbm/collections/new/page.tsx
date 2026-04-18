@@ -22,7 +22,7 @@ export default function NewCollectionPage() {
   return (
     <PageShell
       title="New Collection"
-      description="Organize your saved links into a curated folder."
+      description="Group LadyFrame bookmarks into a named collection you can share or keep private."
       actions={
         <Button variant="outline" asChild>
           <Link href="/sbm/collections">Back to Collections</Link>
@@ -35,7 +35,7 @@ export default function NewCollectionPage() {
             <label className="text-sm font-medium text-foreground">Collection Name</label>
             <Input
               className="mt-2"
-              placeholder="Design Systems"
+              placeholder="e.g. Performance reading list"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -44,7 +44,7 @@ export default function NewCollectionPage() {
             <label className="text-sm font-medium text-foreground">Description</label>
             <Textarea
               className="mt-2"
-              placeholder="What belongs in this folder?"
+              placeholder="Short note on what you will save here (optional)"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
