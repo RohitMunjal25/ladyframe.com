@@ -56,28 +56,28 @@ const getImageUrl = (post: SitePost, content: ListingContent) => {
 
 const cardStyles = {
   'listing-elevated': {
-    frame: 'rounded-[1.9rem] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(15,23,42,0.14)]',
-    muted: 'text-slate-600',
-    title: 'text-slate-950',
-    badge: 'bg-slate-950 text-white',
+    frame: 'rounded-[1.9rem] border border-[rgba(64,138,113,0.2)] bg-white shadow-[0_20px_60px_rgba(9,20,19,0.07)] hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(9,20,19,0.11)]',
+    muted: 'text-[rgb(55,85,76)]',
+    title: 'text-[#091413]',
+    badge: 'bg-[#285a48] text-[#f4fff8]',
   },
   'editorial-feature': {
-    frame: 'rounded-[1.8rem] border border-[rgba(125,83,45,0.12)] bg-[#fffaf3] shadow-[0_18px_55px_rgba(89,52,24,0.1)] hover:-translate-y-1 hover:shadow-[0_26px_75px_rgba(89,52,24,0.14)]',
-    muted: 'text-[#71584b]',
-    title: 'text-[#2b1d17]',
-    badge: 'bg-[#2b1d17] text-[#fff3df]',
+    frame: 'rounded-[1.8rem] border border-[rgba(64,138,113,0.18)] bg-[linear-gradient(180deg,#ffffff_0%,#f4fff8_100%)] shadow-[0_18px_55px_rgba(9,20,19,0.07)] hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(9,20,19,0.11)]',
+    muted: 'text-[rgb(55,85,76)]',
+    title: 'text-[#091413]',
+    badge: 'bg-[#b0e4cc] text-[#091413]',
   },
   'studio-panel': {
-    frame: 'rounded-[1.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(7,17,31,0.96),rgba(12,23,43,0.96))] text-white shadow-[0_24px_80px_rgba(15,23,42,0.35)] hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(15,23,42,0.42)]',
-    muted: 'text-slate-300',
+    frame: 'rounded-[1.9rem] border border-[rgba(176,228,204,0.14)] bg-[linear-gradient(180deg,rgba(9,20,19,0.96),rgba(15,40,34,0.96))] text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(0,0,0,0.42)]',
+    muted: 'text-[#b0e4cc]/75',
     title: 'text-white',
-    badge: 'bg-[#8df0c8] text-[#07111f]',
+    badge: 'bg-[#b0e4cc] text-[#091413]',
   },
   'catalog-grid': {
-    frame: 'rounded-[1.8rem] border border-[rgba(67,78,41,0.14)] bg-[#f8faf1] shadow-[0_18px_58px_rgba(55,65,31,0.1)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(55,65,31,0.14)]',
-    muted: 'text-[#5b664c]',
-    title: 'text-[#1f2617]',
-    badge: 'bg-[#1f2617] text-[#edf5dc]',
+    frame: 'rounded-[1.8rem] border border-[rgba(64,138,113,0.2)] bg-[#f3fff8] shadow-[0_18px_58px_rgba(9,20,19,0.07)] hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(9,20,19,0.11)]',
+    muted: 'text-[rgb(55,85,76)]',
+    title: 'text-[#091413]',
+    badge: 'bg-[#285a48] text-[#f4fff8]',
   },
 } as const
 
@@ -124,11 +124,11 @@ export function TaskPostCard({
           cta: 'text-[#1f2617]',
         }
       : {
-          frame: 'rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_18px_44px_rgba(15,23,42,0.08)] hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.14)]',
-          badge: 'bg-slate-950 text-white',
-          muted: 'text-slate-600',
-          title: 'text-slate-950',
-          cta: 'text-slate-950',
+          frame: 'rounded-[1.75rem] border border-[rgba(64,138,113,0.2)] bg-white shadow-[0_18px_44px_rgba(9,20,19,0.07)] hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(9,20,19,0.12)]',
+          badge: 'bg-[#285a48] text-[#f4fff8]',
+          muted: 'text-[rgb(55,85,76)]',
+          title: 'text-[#091413]',
+          cta: 'text-[#285a48]',
         }
 
     return (

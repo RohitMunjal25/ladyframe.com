@@ -127,4 +127,23 @@ export const THEME_PACKS: Record<ThemePackDefinition['key'], ThemePackDefinition
     },
     notes: ['Warmer curation palette', 'Board-style modules', 'Human-curated feel'],
   },
+  'folio-emerald': {
+    key: 'folio-emerald',
+    label: 'Folio Emerald',
+    productFamily: 'curation',
+    brandPack: 'directory-clean',
+    navbar: 'folio-nav',
+    footer: 'dense-footer',
+    homeLayout: 'article-home',
+    motionPack: 'minimal',
+    defaultTaskTemplates: {
+      sbm: 'sbm-library',
+      profile: 'profile-creator',
+      article: 'article-journal',
+      image: 'image-portfolio',
+      listing: 'listing-directory',
+      classified: 'classified-market',
+    },
+    notes: ['SBM-first research desk', 'Mint and ink palette', 'Two-tier navigation'],
+  },
 }

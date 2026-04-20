@@ -716,27 +716,30 @@ export const mockCategories: Category[] = [
 export const mockTestimonials: Testimonial[] = [
   {
     id: '1',
-    content: 'This platform has completely transformed how we manage our business listings. The interface is intuitive and our engagement has increased by 300%.',
+    content:
+      'We moved our reading lists and launch links to LadyFrame. The bookmark shelf is fast, and clients finally see who maintains each resource.',
     author: mockUsers[1],
     rating: 5,
-    company: 'TechStart Inc.',
-    role: 'CEO'
+    company: 'Harbor Studio',
+    role: 'Founding partner'
   },
   {
     id: '2',
-    content: 'The best publishing platform I\'ve used. The reading experience rivals Medium, and the community engagement features are outstanding.',
+    content:
+      'I publish long articles elsewhere but keep LadyFrame as my public profile and link hub. One place for saves, one place for identity.',
     author: mockUsers[2],
     rating: 5,
-    company: 'Creative Agency',
-    role: 'Content Director'
+    company: 'Independent author',
+    role: 'Writer'
   },
   {
     id: '3',
-    content: 'Sold my items within days of listing. The classified ads section is well-designed and attracts serious buyers.',
+    content:
+      'Collections let our team share research without another Slack dump. Search across tasks is the feature we use every day.',
     author: mockUsers[3],
-    rating: 4,
-    company: 'Freelance',
-    role: 'Photographer'
+    rating: 5,
+    company: 'Northwind Research',
+    role: 'Research lead'
   }
 ]
 
@@ -754,80 +757,80 @@ export const mockDashboardStats: DashboardStats = {
 export const mockTeamMembers: TeamMember[] = [
   {
     id: 'team-1',
-    name: 'Avery Brooks',
-    role: 'Head of Community',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Building programs that connect creators with meaningful collaborations.',
-    location: 'Austin, TX'
+    name: 'Meera Shah',
+    role: 'Co-founder · Product',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop',
+    bio: 'Leads LadyFrame product direction—bookmarking flows, profiles, and the calm emerald shell you see across the site.',
+    location: 'Mumbai, India'
   },
   {
     id: 'team-2',
-    name: 'Jordan Lee',
-    role: 'Product Lead',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-    bio: 'Designing calm, curated experiences for modern teams.',
-    location: 'San Francisco, CA'
+    name: 'Chris Okonkwo',
+    role: 'Engineering lead',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop',
+    bio: 'Owns reliability, search, and performance so shelves stay fast even when the archive grows.',
+    location: 'Berlin, Germany'
   },
   {
     id: 'team-3',
-    name: 'Priya Desai',
-    role: 'Engineering',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Focused on reliability, search, and delightful performance.',
-    location: 'New York, NY'
+    name: 'Elena Ruiz',
+    role: 'Community & editorial',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop',
+    bio: 'Runs onboarding content, office hours, and the guidelines that keep LadyFrame welcoming and high-signal.',
+    location: 'Barcelona, Spain'
   }
 ]
 
 export const mockCommunityEvents: CommunityEvent[] = [
   {
     id: 'event-1',
-    title: 'Weekly Bookmark Jam',
-    date: 'Every Friday',
+    title: 'LadyFrame bookmark office hours',
+    date: 'Every Thursday',
     tag: 'Live',
-    description: 'Curate your best links together and learn from fellow members.'
+    description: 'Bring three links you saved this week—we discuss tags, collections, and how you describe saves.'
   },
   {
     id: 'event-2',
-    title: 'Design Systems Roundtable',
-    date: 'April 2',
+    title: 'Public profile teardown (friendly)',
+    date: 'First Tuesday monthly',
     tag: 'Workshop',
-    description: 'Swap processes and audit templates with peers.'
+    description: 'Volunteer profiles get quick wins on bio, links, and photo so visitors know you in seconds.'
   },
   {
     id: 'event-3',
-    title: 'Creator Office Hours',
-    date: 'April 10',
+    title: 'Collections deep dive',
+    date: 'April 18',
     tag: 'AMA',
-    description: 'Ask our team anything about your workflow.'
+    description: 'Ask the team how folders, privacy, and sharing work end to end on LadyFrame.'
   }
 ]
 
 export const mockCommunityGroups: CommunityGroup[] = [
-  { id: 'group-1', name: 'Product Leaders', members: 1240, focus: 'Roadmaps and strategy' },
-  { id: 'group-2', name: 'Design Ops', members: 860, focus: 'Systems and governance' },
-  { id: 'group-3', name: 'Frontend Guild', members: 1510, focus: 'UI engineering' },
-  { id: 'group-4', name: 'Remote Teams', members: 930, focus: 'Distributed rituals' }
+  { id: 'group-1', name: 'Indie curators', members: 420, focus: 'Link shelves and reading lists' },
+  { id: 'group-2', name: 'Writers on LadyFrame', members: 310, focus: 'Articles plus bookmarks' },
+  { id: 'group-3', name: 'Design & front-end', members: 580, focus: 'UI feedback and accessibility' },
+  { id: 'group-4', name: 'Local guides', members: 260, focus: 'Listings and neighborhood saves' }
 ]
 
 export const mockPressAssets: PressAsset[] = [
   {
     id: 'press-1',
-    title: 'Brand Logo Pack',
-    description: 'SVG, PNG, and monochrome variations.',
+    title: 'LadyFrame logo pack',
+    description: 'Wordmark, circular mark, and monochrome reverses for light and dark backgrounds.',
     fileType: 'ZIP',
     previewUrl: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&h=600&fit=crop'
   },
   {
     id: 'press-2',
-    title: 'Product Screenshots',
-    description: 'High-resolution UI captures for media.',
+    title: 'Product screenshots (web)',
+    description: 'Navbar, bookmark shelf, profile header, and search—cropped for articles and decks.',
     fileType: 'ZIP',
     previewUrl: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=800&h=600&fit=crop'
   },
   {
     id: 'press-3',
-    title: 'Brand Guidelines',
-    description: 'Usage rules, color palette, and typography.',
+    title: 'Brand guidelines (PDF)',
+    description: 'Emerald palette, typography, voice (“connect · share · grow”), and partner do’s and don’ts.',
     fileType: 'PDF',
     previewUrl: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&h=600&fit=crop'
   }
@@ -860,47 +863,52 @@ export const mockApiEndpoints: ApiEndpoint[] = [
 export const mockFaqs: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'How do I submit a bookmark?',
-    answer: 'Open Social Bookmarks and choose Submit Bookmark to add your link.'
+    question: 'How do I save my first bookmark on LadyFrame?',
+    answer: 'Open Social Bookmarking from the navigation bar, choose Submit bookmark, paste the URL, add a title and short note, then pick tags or a collection.'
   },
   {
     id: 'faq-2',
-    question: 'Can I create private collections?',
-    answer: 'Yes. Set your collection to private when creating it.'
+    question: 'Can collections stay private?',
+    answer: 'Yes. When you create a collection you can keep it private to your account or publish it for others to follow.'
   },
   {
     id: 'faq-3',
-    question: 'How do I upgrade plans?',
-    answer: 'Go to Settings, then Billing to manage your subscription.'
+    question: 'Where do I edit my public profile?',
+    answer: 'Go to Settings to update your name, bio, avatar, and links. Your public profile page updates automatically.'
+  },
+  {
+    id: 'faq-4',
+    question: 'How do I find articles, listings, or PDFs?',
+    answer: 'Use Search from the header or footer links. LadyFrame indexes every enabled task type in one place.'
   }
 ]
 
 export const mockBlogPosts: BlogPost[] = [
   {
     id: 'blog-1',
-    title: 'Community Notes: March',
+    title: 'LadyFrame notes — March 2026',
     date: 'Mar 12, 2026',
-    excerpt: 'Highlights from the community, trending collections, and product updates.',
+    excerpt: 'Collections improvements, faster search indexing, and tips for a clearer public profile.',
     tag: 'Updates',
-    author: 'Avery Brooks',
+    author: 'LadyFrame Editorial',
     readTime: '4 min'
   },
   {
     id: 'blog-2',
-    title: 'Designing for Shared Knowledge',
+    title: 'Designing shelves people actually scan',
     date: 'Feb 28, 2026',
-    excerpt: 'How we think about curation, trust, and discovery in social bookmarking.',
+    excerpt: 'Why we chose dense rows, mint highlights, and profile trust blocks instead of an infinite card grid.',
     tag: 'Design',
-    author: 'Jordan Lee',
+    author: 'Meera Shah',
     readTime: '6 min'
   },
   {
     id: 'blog-3',
-    title: 'Building the Social Bookmarking Hub',
+    title: 'What belongs in your LadyFrame bio?',
     date: 'Feb 10, 2026',
-    excerpt: 'A behind-the-scenes look at the new SBM module and its workflows.',
-    tag: 'Product',
-    author: 'Priya Desai',
+    excerpt: 'A practical checklist: one-line promise, credibility links, and how to point visitors to your best saves.',
+    tag: 'Guides',
+    author: 'Elena Ruiz',
     readTime: '5 min'
   }
 ]
@@ -908,20 +916,20 @@ export const mockBlogPosts: BlogPost[] = [
 export const mockPressCoverage: PressCoverage[] = [
   {
     id: 'press-coverage-1',
-    outlet: 'Product Weekly',
-    headline: 'This platform makes link sharing feel premium.',
+    outlet: 'Indie Tools Monthly',
+    headline: 'LadyFrame makes social bookmarking feel intentional again.',
     date: 'Mar 2026'
   },
   {
     id: 'press-coverage-2',
-    outlet: 'Design Journal',
-    headline: 'A fresh take on community curation.',
+    outlet: 'Design Dispatch',
+    headline: 'Emerald-on-ink UI: how LadyFrame balances density with calm.',
     date: 'Feb 2026'
   },
   {
     id: 'press-coverage-3',
-    outlet: 'Tech Today',
-    headline: 'Why teams are switching to this platform.',
+    outlet: 'Community OS',
+    headline: 'Why small teams publish on LadyFrame instead of noisy social feeds.',
     date: 'Jan 2026'
   }
 ]

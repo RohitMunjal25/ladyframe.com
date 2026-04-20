@@ -9,15 +9,14 @@ const services = [
 ]
 
 const incidents = [
-  { date: 'Mar 12, 2026', title: 'Delayed notifications', status: 'Resolved' },
-  { date: 'Feb 22, 2026', title: 'Search indexing lag', status: 'Resolved' },
+  { date: 'Apr 18, 2026', title: 'All systems operational — no incidents reported.', status: 'Monitoring' },
 ]
 
 export default function StatusPage() {
   return (
     <PageShell
       title="System Status"
-      description="Real-time uptime and service health."
+      description="LadyFrame web app, API, and media delivery status."
     >
       <div className="space-y-6">
         <div className="grid gap-4 md:grid-cols-3">
@@ -32,7 +31,7 @@ export default function StatusPage() {
         </div>
         <Card className="border-border bg-card">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground">Incident History</h3>
+            <h3 className="text-lg font-semibold text-foreground">Recent status log</h3>
             <div className="mt-4 space-y-3">
               {incidents.map((incident) => (
                 <div key={incident.title} className="rounded-lg border border-border bg-secondary/40 px-4 py-3">
