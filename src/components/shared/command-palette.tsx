@@ -39,8 +39,8 @@ export function CommandPalette() {
   const allItems = useMemo(() => [...quickLinks, ...createActions], [])
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen} title="Command Palette" description="Search for a command to run...">
-      <CommandInput placeholder="Search commands..." />
+    <CommandDialog open={open} onOpenChange={setOpen} title="LadyFrame quick actions" description="Jump to a page or start creating content.">
+      <CommandInput placeholder="Search routes and actions…" />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigate">

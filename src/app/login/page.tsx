@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Bookmark, Building2, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
+import { SITE_CONFIG } from '@/lib/site-config'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind } from '@/design/factory/get-product-kind'
 import { LOGIN_PAGE_OVERRIDE_ENABLED, LoginPageOverride } from '@/overrides/login-page'
@@ -40,7 +41,7 @@ function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
       action: 'bg-[#8df0c8] text-[#07111f] hover:bg-[#77dfb8]',
       icon: ImageIcon,
       title: 'Enter the creator workspace',
-      body: 'Open your visual feed, creator profile, and publishing tools without dropping into a generic admin shell.',
+      body: 'Open your LadyFrame gallery, creator profile, and publishing tools in a workspace tuned for visuals.',
     }
   }
   return {
@@ -50,8 +51,8 @@ function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
     muted: 'text-[#71574a]',
     action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
     icon: Bookmark,
-    title: 'Open your curated collections',
-    body: 'Manage saved resources, collection notes, and curator identity from a calmer workspace.',
+    title: 'Sign in to LadyFrame',
+    body: 'Return to your bookmark shelf, public profile, drafts, and dashboard with the same calm emerald experience as the marketing site.',
   }
 }
 
@@ -75,7 +76,11 @@ export default function LoginPage() {
             <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em]">{config.title}</h1>
             <p className={`mt-5 text-sm leading-8 ${config.muted}`}>{config.body}</p>
             <div className="mt-8 grid gap-4">
-              {['Cleaner product-specific workflows', 'Palette and layout matched to the site family', 'Fewer repeated admin patterns'].map((item) => (
+              {[
+                `One login for saves, profile, and every post type ${SITE_CONFIG.name} supports`,
+                'Bookmark shelf and profile surfaces stay visually aligned with the public site',
+                'Search, collections, and settings live where you expect them',
+              ].map((item) => (
                 <div key={item} className="rounded-[1.5rem] border border-current/10 px-4 py-4 text-sm">{item}</div>
               ))}
             </div>

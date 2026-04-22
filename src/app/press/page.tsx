@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/dialog'
 import { useToast } from '@/components/ui/use-toast'
 import { mockPressAssets, mockPressCoverage } from '@/data/mock-data'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 export default function PressPage() {
   const { toast } = useToast()
@@ -24,14 +25,14 @@ export default function PressPage() {
   return (
     <PageShell
       title="Press"
-      description="Media resources, brand assets, and press coverage."
+      description={`Logos, screenshots, and story angles for covering ${SITE_CONFIG.name}.`}
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <Card className="border-border bg-card">
           <CardContent className="p-6 space-y-3">
             <h2 className="text-lg font-semibold text-foreground">Press Kit</h2>
             <p className="text-sm text-muted-foreground">
-              Download logos, product screenshots, and brand guidelines for media use.
+              Download the {SITE_CONFIG.name} logo pack, UI screenshots, and a short brand sheet for articles, decks, and social posts.
             </p>
             <div className="grid gap-2">
               {mockPressAssets.map((asset) => (

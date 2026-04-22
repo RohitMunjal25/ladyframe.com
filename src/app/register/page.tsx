@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Bookmark, Building2, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
+import { SITE_CONFIG } from '@/lib/site-config'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind } from '@/design/factory/get-product-kind'
 import { REGISTER_PAGE_OVERRIDE_ENABLED, RegisterPageOverride } from '@/overrides/register-page'
@@ -51,7 +52,7 @@ function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
     action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
     icon: Bookmark,
     title: 'Create a curator account',
-    body: 'Build shelves, save references, and connect collections to your profile without a generic feed setup.',
+    body: `Create your ${SITE_CONFIG.name} account to save links in collections, publish a public profile, and grow an audience without noisy algorithmic feeds.`,
   }
 }
 
@@ -75,7 +76,11 @@ export default function RegisterPage() {
             <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em]">{config.title}</h1>
             <p className={`mt-5 text-sm leading-8 ${config.muted}`}>{config.body}</p>
             <div className="mt-8 grid gap-4">
-              {['Different onboarding per product family', 'No repeated one-size-fits-all shell', 'Profile, publishing, and discovery aligned'].map((item) => (
+              {[
+                `Bookmark-first home with ${SITE_CONFIG.name} navigation and search`,
+                'Public profile and collections share one identity system',
+                'Publish articles, listings, classifieds, images, or PDFs when you are ready',
+              ].map((item) => (
                 <div key={item} className="rounded-[1.5rem] border border-current/10 px-4 py-4 text-sm">{item}</div>
               ))}
             </div>
@@ -87,7 +92,7 @@ export default function RegisterPage() {
               <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Full name" />
               <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Email address" />
               <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Password" type="password" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What are you creating or publishing?" />
+              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What will you save or publish on LadyFrame?" />
               <button type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${config.action}`}>Create account</button>
             </form>
             <div className={`mt-6 flex items-center justify-between text-sm ${config.muted}`}>

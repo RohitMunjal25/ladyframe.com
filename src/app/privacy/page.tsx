@@ -1,17 +1,27 @@
 ﻿import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 const sections = [
-  { title: 'Data We Collect', body: 'Account information, usage analytics, and content you submit.' },
-  { title: 'How We Use Data', body: 'To personalize your experience, improve search, and keep the platform secure.' },
-  { title: 'Your Choices', body: 'You can manage email preferences and delete your account at any time.' },
+  {
+    title: 'Data we collect',
+    body: `When you use ${SITE_CONFIG.name}, we collect account details (name, email), content you publish (bookmarks, profiles, posts), and technical logs needed to run and secure the service.`,
+  },
+  {
+    title: 'How we use data',
+    body: 'We use this information to operate search and feeds, prevent abuse, fix bugs, and send essential product email such as security notices.',
+  },
+  {
+    title: 'Your choices',
+    body: 'You can update or delete most content from your dashboard, export where available, and request account deletion through support.',
+  },
 ]
 
 export default function PrivacyPage() {
   return (
     <PageShell
       title="Privacy Policy"
-      description="How we collect, use, and protect your information."
+      description={`How ${SITE_CONFIG.name} collects, uses, and protects personal information.`}
     >
       <Card className="border-border bg-card">
         <CardContent className="p-6 space-y-4">

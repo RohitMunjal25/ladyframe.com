@@ -7,7 +7,7 @@ export default function ArticlePreviewPage() {
   return (
     <PageShell
       title="Article Preview"
-      description="A quick look at your draft before publishing."
+      description="Preview typography and spacing before you publish to LadyFrame."
       actions={
         <Button variant="outline" asChild>
           <Link href="/dashboard/articles/new">Back to Editor</Link>
@@ -16,9 +16,10 @@ export default function ArticlePreviewPage() {
     >
       <Card className="border-border bg-card">
         <CardContent className="p-6">
-          <h2 className="text-2xl font-semibold text-foreground">Draft Title</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Article headline appears here</h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            This is a placeholder preview. Use this page to confirm layout, typography, and spacing.
+            This preview route shows how your draft will read on LadyFrame. Return to the editor to adjust title, excerpt,
+            and body—then publish when you are satisfied with the rhythm and hierarchy.
           </p>
         </CardContent>
       </Card>

@@ -120,9 +120,9 @@ export default function SubmitBookmarkPage() {
               <Sparkles className="h-4 w-4 text-accent" />
               Submit a Bookmark
             </div>
-            <h1 className="mt-2 text-3xl font-bold text-foreground">Share a link with the community.</h1>
+            <h1 className="mt-2 text-3xl font-bold text-foreground">Save a link to your LadyFrame shelf.</h1>
             <p className="mt-2 text-muted-foreground">
-              Add a short description, pick a category, and tag it for easy discovery.
+              Paste the URL, write a clear title and one-line takeaway, then tag it so others can find it from search and collections.
             </p>
           </div>
         </section>
@@ -230,7 +230,7 @@ export default function SubmitBookmarkPage() {
               <div className="rounded-xl border border-border bg-card p-5">
                 <h4 className="text-sm font-semibold text-foreground">Preview Checklist</h4>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Once submitted, your link will appear in Trending or Latest based on community votes.
+                  After you submit, the bookmark appears on your shelf and in LadyFrame search. Engagement signals may surface it in featured rows.
                 </p>
               </div>
             </div>

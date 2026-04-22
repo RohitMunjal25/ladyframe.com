@@ -8,22 +8,22 @@ import { mockTeamMembers } from "@/data/mock-data";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const highlights = [
-  { label: "Creators onboarded", value: "12k+" },
-  { label: "Bookmarks shared", value: "180k" },
-  { label: "Listings published", value: "8.6k" },
+  { label: "Primary surface", value: "Social bookmarking" },
+  { label: "Trust layer", value: "Public profiles" },
+  { label: "Full archive", value: "Articles · listings · more" },
 ];
 
 const values = [
-  { title: "Curated by people", description: "We believe trusted recommendations beat endless feeds." },
-  { title: "Designed for focus", description: "Clear, calm UI helps you find the next best resource fast." },
-  { title: "Built to share", description: "Collections make collaboration and knowledge flow effortless." },
+  { title: "Curated by people", description: "LadyFrame is built around saves you stand behind—not algorithmic noise." },
+  { title: "Designed for focus", description: "Dense rows, clear hierarchy, and mint-on-emerald contrast keep scanning fast." },
+  { title: "Built to share", description: "Collections and public profiles make it easy to show what you read and who you are." },
 ];
 
 export default function AboutPage() {
   return (
     <PageShell
       title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern platform for creators, communities, and curated business discovery.`}
+      description={`${SITE_CONFIG.name} is where you save links, publish a public profile, and explore every other format the site supports—from one calm desk.`}
       actions={
         <>
           <Button variant="outline" asChild>
@@ -40,11 +40,11 @@ export default function AboutPage() {
           <CardContent className="space-y-4 p-6">
             <Badge variant="secondary">Our Story</Badge>
             <h2 className="text-2xl font-semibold text-foreground">
-              A single home for knowledge, discovery, and community.
+              One home for saves, identity, and everything you publish.
             </h2>
             <p className="text-sm text-muted-foreground">
-              {SITE_CONFIG.name} brings together publishing, listings, and social bookmarking so teams can move faster
-              and keep their best resources close.
+              {SITE_CONFIG.name} combines social bookmarking with public profiles and a full archive of articles, listings,
+              classifieds, images, and PDFs—so research, discovery, and trust stay in the same place.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((item) => (

@@ -1,5 +1,6 @@
 import type { TaskKey } from "./site-config";
 import type { SitePost } from "./site-connector";
+import { siteIdentity } from "@/config/site.identity";
 
 const taskSeeds: Record<TaskKey, string> = {
   listing: "listing",
@@ -16,102 +17,132 @@ const taskSeeds: Record<TaskKey, string> = {
 
 const taskTitles: Record<TaskKey, string[]> = {
   listing: [
-    "Urban Coffee Studio",
-    "Growth Labs Agency",
-    "Northside Fitness",
-    "PixelCraft Design",
-    "Prime Auto Care",
+    "Northside Creative Studio",
+    "Harbor City Pilates",
+    "Elm Street Bookshop",
+    "Brightline Legal Clinic",
+    "Riverside Plant Co.",
   ],
   classified: [
-    "Used MacBook Pro 16",
-    "Studio Space for Rent",
-    "Hiring Frontend Developer",
-    "Weekend Photography Gig",
-    "City Center Apartment",
+    "Standing desk — local pickup",
+    "Small office sublet (month-to-month)",
+    "Looking for UX contract (Q2)",
+    "Weekend photo walk — 12 spots",
+    "Vintage road bike",
   ],
   article: [
-    "Scaling Local SEO in 2026",
-    "The Future of Directory Sites",
-    "Design Systems for Multi-Site",
-    "From MVP to Marketplace",
-    "Content Ops That Ship Fast",
+    "How we organize research at LadyFrame",
+    "Designing calm bookmark shelves",
+    "Public profiles without the performance feed",
+    "From saved link to trusted source",
+    "Shipping features on a small team",
   ],
   image: [
-    "Golden Hour Interiors",
-    "Mountain Trail Series",
-    "Studio Portrait Set",
-    "Neon Night Market",
-    "Minimal Workspace",
+    "Workspace tour — editorial desk",
+    "Community meetup — spring 2026",
+    "Brand refresh moodboard",
+    "Field notes from our last offsite",
+    "Product photography — mint on emerald",
   ],
   profile: [
-    "Aisha Khan",
-    "Rohan Patel",
-    "Studio R&R",
-    "Team Northwind",
-    "Maya Desai",
+    "Ananya Mehta",
+    "Jordan Ellis",
+    "Studio Lumen",
+    "Rahul Verma",
+    "Morgan Lee",
   ],
   social: [
-    "Community Launch Update",
-    "Collab Request: Designers",
-    "Weekly Trend Digest",
-    "New Partnerships Announced",
-    "Creator Spotlight Series",
+    "LadyFrame changelog — March",
+    "Office hours: collections Q&A",
+    "Bookmarking habits that stuck",
+    "Welcome new curators",
+    "Tips for a clearer public profile",
   ],
   pdf: [
-    "Local SEO Playbook",
-    "Marketplace UX Guide",
-    "Outbound Sales Template",
-    "Agency Pricing Deck",
-    "SaaS Metrics Cheatsheet",
+    "LadyFrame product overview (PDF)",
+    "Accessibility checklist for publishers",
+    "Onboarding checklist for teams",
+    "Content moderation guidelines",
+    "API quick reference",
   ],
   org: [
-    "Northwind Collective",
-    "Brightline Media",
-    "Atlas Labs",
-    "Cobalt Studio",
-    "Zenith Partners",
+    "LadyFrame Labs",
+    "Open Curators Guild",
+    "Harbor Media Collective",
+    "Northwind Research",
+    "Brightline Education",
   ],
   sbm: [
-    "SEO Checklist 2026",
-    "Directory Growth Tactics",
-    "Backlink Outreach Vault",
-    "AI Writing Tools List",
-    "Local Listing Audit",
+    "Shelf picks — links teams reopen before every review",
+    "Profile spine — who saved or published this, at a glance",
+    "Collections — shared shelves without losing your personal flow",
+    "Trust cues — bios, continuity, and outbound credibility",
+    "One desk — bookmarks, profiles, and search in the same rhythm",
   ],
   comment: [
-    "Reply: Agency Growth Stack",
-    "Commentary: Link Building",
-    "Response: Listing Quality",
-    "Thread: SEO Experiments",
-    "Hot Take: Directory UX",
+    "Notes on bookmark shelf density",
+    "Reply: profile trust signals",
+    "Discussion: collection privacy",
+    "Feedback: search filters",
+    "Thread: emerald theme contrast",
   ],
 };
 
 const taskCategories: Record<TaskKey, string[]> = {
-  listing: ["Marketing", "Tech", "Design", "Fitness", "Automotive"],
-  classified: ["Jobs", "Real Estate", "Services", "Gigs", "Market"],
-  article: ["Strategy", "SEO", "Product", "Growth", "Ops"],
-  image: ["Lifestyle", "Travel", "Studio", "Urban", "Minimal"],
-  profile: ["Founder", "Creator", "Agency", "Team", "Consultant"],
-  social: ["Community", "News", "Updates", "Events", "Insights"],
-  pdf: ["Guides", "Playbooks", "Templates", "Reports", "Docs"],
-  org: ["Agency", "Studio", "Collective", "Partner", "Network"],
-  sbm: ["Bookmarks", "Tools", "Resources", "SEO", "Research"],
-  comment: ["Opinion", "Reply", "Discussion", "Feedback", "Debate"],
+  listing: ["Studio", "Wellness", "Retail", "Services", "Outdoors"],
+  classified: ["Furniture", "Space", "Jobs", "Events", "Market"],
+  article: ["Product", "Design", "Community", "Trust", "Engineering"],
+  image: ["Studio", "Events", "Brand", "Team", "Product"],
+  profile: ["Curator", "Writer", "Studio", "Developer", "Educator"],
+  social: ["Updates", "Q&A", "Tips", "Welcome", "Changelog"],
+  pdf: ["Guides", "Policy", "Reference", "Onboarding", "Research"],
+  org: ["Partner", "Collective", "Nonprofit", "Studio", "Education"],
+  sbm: [
+    "Curated saves",
+    "Public profiles",
+    "Collections",
+    "Trust & context",
+    "How it works",
+  ],
+  comment: ["Discussion", "Feedback", "Notes", "Reply", "Ideas"],
 };
 
 const summaryByTask: Record<TaskKey, string> = {
-  listing: "Verified business listing with trusted details.",
-  classified: "Fresh deal posted by a verified seller.",
-  article: "Long-form insight from industry experts.",
-  image: "Curated visual story and gallery.",
-  profile: "Featured creator profile and highlights.",
-  social: "Community update and engagement thread.",
-  pdf: "Downloadable resource for your team.",
-  org: "Organization spotlight and services.",
-  sbm: "Curated bookmark collection entry.",
-  comment: "Response post with perspective and context.",
+  listing: "Verified business listing with hours, location, and contact paths.",
+  classified: "Short-lived offer or notice from a community member.",
+  article: "Long-form note from the LadyFrame editorial desk or members.",
+  image: "Photo set or visual story published to the gallery.",
+  profile: "Public profile with bio, links, and activity highlights.",
+  social: "Lightweight update from the LadyFrame community lane.",
+  pdf: "Downloadable reference or guideline hosted on LadyFrame.",
+  org: "Organization hub with structured details and outbound links.",
+  sbm:
+    "Hand-picked save with a short why—meant for quick scanning beside profile trust.",
+  comment: "Thread reply or discussion note tied to a story.",
 };
+
+const sampleSites = [
+  "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
+  "https://web.dev/learn/performance/",
+  "https://www.nngroup.com/articles/",
+  "https://www.a11yproject.com/",
+  "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+];
+
+const siteBase = siteIdentity.url.replace(/\/$/, "");
+const sbmShelfPreviewUrls = [
+  `${siteBase}/sbm`,
+  `${siteBase}/profile`,
+  `${siteBase}/help`,
+  `${siteBase}/search`,
+  `${siteBase}/about`,
+];
+
+const authorNames = [
+  "Community curators",
+  "Editorial desk",
+  "Member shelf",
+];
 
 const randomFrom = (items: string[], index: number) =>
   items[index % items.length];
@@ -128,6 +159,11 @@ export const getMockPostsForTask = (task: TaskKey): SitePost[] => {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "");
 
+    const website =
+      task === "sbm"
+        ? sbmShelfPreviewUrls[index % sbmShelfPreviewUrls.length]
+        : sampleSites[index % sampleSites.length];
+
     return {
       id: `${task}-mock-${index + 1}`,
       title,
@@ -136,14 +172,13 @@ export const getMockPostsForTask = (task: TaskKey): SitePost[] => {
       content: {
         type: task,
         category,
-        location: "Delhi",
+        location: index % 2 === 0 ? "Remote" : "India",
         description: summaryByTask[task],
-        website: "https://example.com",
-        phone: "+91-9999999999",
+        website,
       },
       media: [{ url: buildImage(task, index), type: "IMAGE" }],
       tags: [task, category],
-      authorName: "Site Master Pro",
+      authorName: authorNames[index % authorNames.length],
       publishedAt: new Date().toISOString(),
     };
   });
