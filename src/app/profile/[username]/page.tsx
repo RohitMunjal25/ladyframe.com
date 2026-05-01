@@ -5,11 +5,13 @@ import { NavbarShell } from "@/components/shared/navbar-shell";
 import { ContentImage } from "@/components/shared/content-image";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
 import { buildPostUrl } from "@/lib/task-data";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
 import { fetchTaskPostBySlug, fetchTaskPosts } from "@/lib/task-data";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { Mail } from "lucide-react";
 
 export const revalidate = 3;
 
@@ -111,40 +113,67 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
       <NavbarShell />
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
-        <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
-          <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
-            <div className="flex justify-center md:justify-start">
-              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
-                {logoUrl ? (
-                  <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="144px" intrinsicWidth={144} intrinsicHeight={144} />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">
-                    {post.title.slice(0, 1).toUpperCase()}
+        <Card className="border-border/60 bg-white/90 shadow-sm">
+          <CardHeader className="px-6 py-6 md:px-8 md:py-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+                <div className="flex-shrink-0">
+                  <div className="relative h-24 w-24 overflow-hidden rounded-full border-2 border-border/70 bg-muted md:h-32 md:w-32">
+                    {logoUrl ? (
+                      <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="128px" intrinsicWidth={128} intrinsicHeight={128} />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-2xl font-semibold text-muted-foreground md:text-3xl">
+                        {post.title.slice(0, 1).toUpperCase()}
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h1 className="text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">{brandName}</h1>
+                  {domain ? (
+                    <Link href={website || '#'} target="_blank" rel="noopener noreferrer" className="mt-1 block text-sm font-medium text-primary hover:underline">
+                      {domain}
+                    </Link>
+                  ) : null}
+                </div>
+              </div>
+              <div className="flex items-center gap-3 md:flex-shrink-0">
+                <Button asChild variant="outline" size="icon" className="h-10 w-10 rounded-full">
+                  <Link href="/login">
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                  </Link>
+                </Button>
+                <Button asChild className="rounded-full px-6 font-medium">
+                  <Link href="/login">
+                    Follow
+                  </Link>
+                </Button>
               </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{brandName}</h1>
-              {domain ? (
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{domain}</p>
-              ) : null}
-              <article
-                className="article-content prose prose-slate mt-6 max-w-2xl text-base leading-relaxed prose-p:my-4 prose-a:text-primary prose-a:underline prose-strong:font-semibold"
-                dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-              />
-              {website ? (
-                <div className="mt-8">
-                  <Button asChild size="lg" className="px-7 text-base">
-                    <Link href={website} target="_blank" rel="noopener noreferrer">
-                      Visit Official Site
-                    </Link>
-                  </Button>
-                </div>
-              ) : null}
+          </CardHeader>
+          <div className="border-t border-border/60">
+            <div className="px-6 py-3 md:px-8">
+              <button className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                ABOUT
+              </button>
             </div>
           </div>
-        </section>
+          <CardContent className="px-6 pt-0 pb-6 md:px-8 md:pb-8">
+            <article
+              className="article-content prose prose-slate max-w-2xl text-base leading-relaxed prose-p:my-4 prose-a:text-primary prose-a:underline prose-strong:font-semibold"
+              dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+            />
+            {website ? (
+              <div className="mt-6">
+                <Button asChild size="lg" className="px-7 text-base">
+                  <Link href={website} target="_blank" rel="noopener noreferrer">
+                    Visit Official Site
+                  </Link>
+                </Button>
+              </div>
+            ) : null}
+          </CardContent>
+        </Card>
 
         {suggestedArticles.length ? (
           <section className="mt-12">
